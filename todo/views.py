@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Item
+from .forms import ItemForm
 
 # Create your views here.
 
@@ -14,7 +15,7 @@ def get_todo_list(request):
 
 def add_item(request):
     if request.method == 'POST':
-        form = ItemForm(request, POST)
+        form = ItemForm(request.POST)
         if form.is_valid():
             form.save()
 
@@ -23,6 +24,6 @@ def add_item(request):
     context = {
         'form': form
     }
-    return render(request, 'todo/add_item.html')
+    return render(request, 'todo/add_item.html', context)
 
 
