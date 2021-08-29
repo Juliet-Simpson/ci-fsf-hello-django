@@ -6,7 +6,7 @@ from .forms import ItemForm
 
 
 def get_todo_list(request):
-    items = Item.objects.all
+    items = Item.objects.all()
     context = {
         'items': items
     }
